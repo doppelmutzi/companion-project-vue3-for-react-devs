@@ -1,0 +1,15 @@
+dist
+
+*.iml
+.idea/
+node_modules/
+
+.DS_Store
+
+*.log*
+*.debug*
+
+.eslintcache
+
+cypress/videos
+cypress/screenshots

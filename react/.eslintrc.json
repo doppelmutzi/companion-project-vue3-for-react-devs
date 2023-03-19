@@ -1,0 +1,32 @@
+{
+	"extends": [
+	  "prettier",
+	  "plugin:react/recommended"
+	],
+	"plugins": ["prettier"],
+	"rules": {
+	  "prettier/prettier": "error",
+	  "react/no-render-return-value": "off",
+	  "react/react-in-jsx-scope": "off",
+	  "react/prop-types": "off"
+	},
+	"overrides": [
+		{
+		  "files": [ "*.stories.jsx" ],
+		  "rules": {
+			"react/display-name": "off"
+		  }
+		}
+	],
+	"parser": "@babel/eslint-parser",
+	"env": {
+	  "browser": true
+	},
+	"settings": {
+	  "react": {
+		"pragma": "React",
+		"version": "detect"
+	  }
+	}
+  }
+  
