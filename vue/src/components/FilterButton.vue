@@ -15,13 +15,31 @@
 import { useTodosStore } from "@/stores/todos";
 import { storeToRefs } from "pinia";
 
-interface ButtonProps {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-}
+// interface ButtonProps {
+//   label: string;
+//   active: boolean;
+//   onClick: () => void;
+// }
 
-defineProps<ButtonProps>();
+//defineProps<ButtonProps>();
+
+// defineProps({
+//   label: String,
+//   active: Boolean,
+//   onClick: Function,
+// });
+
+defineProps({
+  label: {
+    type: String,
+    required: true,
+  },
+  active: {
+    type: Boolean,
+    default: false,
+  },
+  onClick: { type: Function, required: true },
+});
 
 const { theme } = storeToRefs(useTodosStore());
 const { backgroundColor, color } = theme.value;

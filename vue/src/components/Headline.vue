@@ -1,5 +1,6 @@
 <template>
-  <h1 :style="{ color }">{{ text }}</h1>
+  <div><!-- useless; just for demo purposes --></div>
+  <h1 :class="$attrs.class" :style="{ color }">{{ text }}</h1>
 </template>
 <script lang="ts" setup>
 import { type PropType, computed } from "vue";
@@ -28,10 +29,3 @@ const color = computed(() => {
   }
 });
 </script>
-<style scoped lang="scss">
-h1 {
-  font-size: 100px;
-  font-weight: 100;
-  text-align: center;
-}
-</style>

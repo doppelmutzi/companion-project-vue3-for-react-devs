@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import DeleteButton from "./DeleteButton.vue";
 import { useTodosStore } from "@/stores/todos";
-import { computed, ref } from "vue";
+import { computed, ref, type PropType } from "vue";
 
 const hover = ref(false);
 
@@ -27,18 +27,21 @@ const onMouseOut = () => {
   return (hover.value = false);
 };
 
-interface Props {
-  todo: {
-    id: number;
-    label: string;
-    date: string;
-    checked: boolean;
-  };
-}
+// const props = defineProps<Props>();
 
 const { toggleCheckTodo, removeTodo } = useTodosStore();
 
-const props = defineProps<Props>();
+const props = defineProps({
+  todo: {
+    type: Object as PropType<{
+      id: number;
+      label: string;
+      date: string;
+      checked: boolean;
+    }>,
+    required: true,
+  },
+});
 const isCrossedOut = computed(() => props.todo.checked === true);
 
 const handleDeleteClick = () => {

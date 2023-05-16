@@ -53,7 +53,6 @@ const onEnter = (evt: Event) => {
 
   > input {
     flex: 1;
-    background: white;
     border: 0;
     font-size: 24px;
     caret-color: var(--text-color);
