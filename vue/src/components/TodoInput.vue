@@ -2,6 +2,7 @@
   <div class="todo-input">
     <ToggleButton />
     <input
+      ref="inputRef"
       v-model="inputValue"
       :placeholder="placeholder"
       @keyup.enter="onEnter"
@@ -13,14 +14,22 @@
 import { useTodosStore } from "@/stores/todos";
 import ToggleButton from "./ToggleButton.vue";
 import translation from "@/translation";
-import { ref } from "vue";
+import { ref, onMounted, type Ref } from "vue";
 
 const { todoInput, getPreferedLang } = translation;
 const lang: string = getPreferedLang();
 // FIXME how to type this?
 const placeholder = todoInput.placeholder[lang];
 
-let inputValue = ref("");
+const inputRef: Ref<HTMLInputElement | null> = ref(null);
+
+onMounted(() => {
+  if (inputRef.value != null) {
+    inputRef.value.focus();
+  }
+});
+
+const inputValue = ref("");
 
 const { addTodo } = useTodosStore();
 

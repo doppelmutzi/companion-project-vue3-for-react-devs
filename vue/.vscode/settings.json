@@ -30,5 +30,8 @@
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "stylelint.validate": ["scss", "vue"]
+  "stylelint.validate": ["scss", "vue"],
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#6f0e85" // Change this color!
+  }
 }

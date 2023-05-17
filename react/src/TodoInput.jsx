@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useEffect } from "react";
 import styled from "styled-components";
 import ToggleButton from "./ToggleButton";
 import AppContext from "./AppContext";
@@ -25,6 +25,11 @@ const TodoInput = () => {
   const { todos, setTodos, translation } = useContext(AppContext);
   const lang = translation.getPreferedLang();
   const inputRef = useRef("");
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <Container>
       <ToggleButton />
