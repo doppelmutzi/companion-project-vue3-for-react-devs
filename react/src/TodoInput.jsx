@@ -1,7 +1,8 @@
-import { useContext, useRef, useEffect } from "react";
+import { useContext, useRef, useEffect, useState } from "react";
 import styled from "styled-components";
 import ToggleButton from "./ToggleButton";
 import AppContext from "./AppContext";
+import useTitle from "./hooks/useTitle";
 
 const Container = styled.div`
   display: flex;
@@ -30,6 +31,10 @@ const TodoInput = () => {
     inputRef.current.focus();
   }, []);
 
+  const [lastTodo, setLastTodo] = useState();
+
+  useTitle(lastTodo, "TodoMVC");
+
   return (
     <Container>
       <ToggleButton />
@@ -48,6 +53,7 @@ const TodoInput = () => {
                 checked: false,
               },
             ]);
+            setLastTodo(value.trim());
             inputRef.current.value = "";
           }
         }}

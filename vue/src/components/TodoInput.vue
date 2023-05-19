@@ -15,7 +15,7 @@ import { useTodosStore } from "@/stores/todos";
 import ToggleButton from "./ToggleButton.vue";
 import translation from "@/translation";
 import { ref, onMounted, type Ref } from "vue";
-import useTitle from "@/composables/useTitle";
+import useTitle, { useTitleSimple } from "@/composables/useTitle";
 
 const { todoInput, getPreferedLang } = translation;
 const lang: string = getPreferedLang();
@@ -33,7 +33,9 @@ onMounted(() => {
 const inputValue = ref("");
 
 const recentTodo = ref<string>(document.title);
-useTitle(recentTodo, { prefix: "🚀 " });
+// useTitle(recentTodo, { prefix: "🚀 " });
+
+useTitleSimple(recentTodo);
 
 // const { setTitle } = useTitle("init", { observe: false });
 
