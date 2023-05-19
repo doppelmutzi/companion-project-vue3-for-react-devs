@@ -15,6 +15,7 @@ import { useTodosStore } from "@/stores/todos";
 import ToggleButton from "./ToggleButton.vue";
 import translation from "@/translation";
 import { ref, onMounted, type Ref } from "vue";
+import useTitle from "@/composables/useTitle";
 
 const { todoInput, getPreferedLang } = translation;
 const lang: string = getPreferedLang();
@@ -31,6 +32,9 @@ onMounted(() => {
 
 const inputValue = ref("");
 
+const recentTodo = ref<string>(document.title);
+useTitle(recentTodo);
+
 const { addTodo } = useTodosStore();
 
 const onEnter = (evt: Event) => {
@@ -42,6 +46,7 @@ const onEnter = (evt: Event) => {
       label: value.trim(),
       checked: false,
     });
+    recentTodo.value = inputValue.value;
     inputValue.value = "";
   }
 };
