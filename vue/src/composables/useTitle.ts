@@ -1,8 +1,24 @@
 import { type MaybeRef, watchEffect, ref } from "vue";
 
-export default (title: MaybeRef<string>): void => {
+type Options = {
+  observe?: boolean;
+  prefix?: string;
+};
+
+export default (title: MaybeRef<string>, options?: Options) => {
+  const titlePrefix = options?.prefix ?? "";
+  const observe = options?.observe ?? true;
   const titleRef = ref(title);
-  watchEffect(() => {
-    document.title = titleRef.value;
-  });
+  if (observe) {
+    watchEffect(() => {
+      console.log("watch effect");
+      document.title = titlePrefix + titleRef.value;
+    });
+  }
+  return {
+    setTitle: (newTitle: string) => {
+      console.log("setTitle");
+      document.title = titlePrefix + newTitle;
+    },
+  };
 };
