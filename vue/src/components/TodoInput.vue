@@ -37,8 +37,11 @@ const inputValue = ref("");
 // useTitleSimple(recentTodo);
 
 // useTitle(recentTodo, { prefix: "🚀 " });
+const { titleRef } = useTitle(document.title, { prefix: "🚀 " });
 
-const { setTitle } = useTitle("init", { observe: false });
+const recentTodo: Ref<string> = titleRef;
+
+// const { setTitle } = useTitle("init", { observe: false });
 
 const { addTodo } = useTodosStore();
 
@@ -51,9 +54,10 @@ const onEnter = (evt: Event) => {
       label: value.trim(),
       checked: false,
     });
-    // recentTodo.value = inputValue.value;
 
-    setTitle(inputValue.value);
+    recentTodo.value = inputValue.value;
+
+    // setTitle(inputValue.value);
     inputValue.value = "";
   }
 };
