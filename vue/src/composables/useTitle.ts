@@ -8,12 +8,15 @@ type Options = {
 export default (title: MaybeRef<string>, options?: Options) => {
   const titlePrefix = options?.prefix ?? "";
   const observe = options?.observe ?? true;
-  const titleRef = ref(title);
   if (observe) {
+    const titleRef = ref(title);
     watchEffect(() => {
       console.log("watch effect");
       document.title = titlePrefix + titleRef.value;
     });
+  } else {
+    console.log("else");
+    document.title = titlePrefix + title;
   }
   return {
     setTitle: (newTitle: string) => {

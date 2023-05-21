@@ -32,12 +32,13 @@ onMounted(() => {
 
 const inputValue = ref("");
 
-const recentTodo = ref<string>(document.title);
+// const recentTodo = ref<string>(document.title);
+
+// useTitleSimple(recentTodo);
+
 // useTitle(recentTodo, { prefix: "🚀 " });
 
-useTitleSimple(recentTodo);
-
-// const { setTitle } = useTitle("init", { observe: false });
+const { setTitle } = useTitle("init", { observe: false });
 
 const { addTodo } = useTodosStore();
 
@@ -50,8 +51,9 @@ const onEnter = (evt: Event) => {
       label: value.trim(),
       checked: false,
     });
-    recentTodo.value = inputValue.value;
-    // setTitle(inputValue.value);
+    // recentTodo.value = inputValue.value;
+
+    setTitle(inputValue.value);
     inputValue.value = "";
   }
 };
