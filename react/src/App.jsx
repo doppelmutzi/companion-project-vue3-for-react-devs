@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Headline from "./Headline";
 import Todos from "./Todos";
+import MailForm from "./MailForm";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -41,6 +42,11 @@ const App = () => {
       <GlobalStyle />
       <AppContainer>
         <Container>
+          <MailForm
+            onSubscribeNewsletter={(firstName) =>
+              console.log(`Subscribe newsletter for ${firstName}`)
+            }
+          />
           <Headline />
           <Todos />
         </Container>
