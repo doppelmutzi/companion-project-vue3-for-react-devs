@@ -9,6 +9,7 @@ const Button = styled.a`
 `;
 
 const ClearButton = ({ onClick }) => {
+  console.log("render <ClearButton />");
   return <Button onClick={onClick}>Clear completed</Button>;
 };
 

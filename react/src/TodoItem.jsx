@@ -44,6 +44,8 @@ const Check = styled.span`
 `;
 
 const TodoItem = ({ todo }) => {
+  console.log("render <TodoItem />");
+
   const { todos, setTodos } = useContext(AppContext);
   const [hover, setHover] = useState(false);
   const [checkHover, setCheckHover] = useState(false);

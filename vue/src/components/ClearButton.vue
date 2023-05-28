@@ -3,6 +3,14 @@
 </template>
 
 <script setup lang="ts">
+import { onUpdated } from "vue";
+
+console.log("render <ClearButton />");
+
+onUpdated(() => {
+  console.log("updated <ClearButton />");
+});
+
 defineProps({
   onClick: {
     type: Function,

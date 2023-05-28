@@ -11,10 +11,16 @@
 </template>
 
 <script setup lang="ts">
+console.log("render <TodoInput />");
+
+onUpdated(() => {
+  console.log("updated <TodoInput />");
+});
+
 import { useTodosStore } from "@/stores/todos";
 import ToggleButton from "./ToggleButton.vue";
 import translation from "@/translation";
-import { ref, onMounted, type Ref } from "vue";
+import { ref, onMounted, type Ref, onUpdated } from "vue";
 import useTitle, { useTitleSimple } from "@/composables/useTitle";
 
 const { todoInput, getPreferedLang } = translation;
@@ -32,14 +38,15 @@ onMounted(() => {
 
 const inputValue = ref("");
 
-// const recentTodo = ref<string>(document.title);
+const recentTodo = ref<string>(document.title);
 
 // useTitleSimple(recentTodo);
 
-// useTitle(recentTodo, { prefix: "🚀 " });
-const { titleRef } = useTitle(document.title, { prefix: "🚀 " });
+useTitle(recentTodo, { prefix: "🚀 " });
 
-const recentTodo: Ref<string> = titleRef;
+// const { titleRef } = useTitle(document.title, { prefix: "🚀 " });
+
+// const recentTodo: Ref<string> = titleRef;
 
 // const { setTitle } = useTitle("init", { observe: false });
 

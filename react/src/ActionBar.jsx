@@ -39,6 +39,7 @@ const DropShadow = styled.div`
 `;
 
 const ActionBar = () => {
+  console.log("render <ActionBar />");
   const { todos, setTodos, theme } = useContext(AppContext);
   return (
     <>

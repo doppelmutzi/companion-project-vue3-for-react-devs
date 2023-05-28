@@ -34,16 +34,19 @@ const Container = styled.div`
   max-width: 80vw;
 `;
 
-const App = () => (
-  <>
-    <GlobalStyle />
-    <AppContainer>
-      <Container>
-        <Headline />
-        <Todos />
-      </Container>
-    </AppContainer>
-  </>
-);
+const App = () => {
+  console.log("render <App />");
+  return (
+    <>
+      <GlobalStyle />
+      <AppContainer>
+        <Container>
+          <Headline />
+          <Todos />
+        </Container>
+      </AppContainer>
+    </>
+  );
+};
 
 export default App;

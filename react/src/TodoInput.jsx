@@ -23,6 +23,8 @@ const Input = styled.input`
 `;
 
 const TodoInput = () => {
+  console.log("render <TodoInput />");
+
   const { todos, setTodos, translation } = useContext(AppContext);
   const lang = translation.getPreferedLang();
   const inputRef = useRef("");

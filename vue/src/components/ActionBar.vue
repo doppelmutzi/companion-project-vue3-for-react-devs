@@ -10,12 +10,18 @@
 </template>
 
 <script setup lang="ts">
+console.log("render <ActionBar />");
+
+onUpdated(() => {
+  console.log("updated <ActionBar />");
+});
+
 import Status from "./Status.vue";
 import FilterButtons from "./FilterButtons.vue";
 import ClearButton from "./ClearButton.vue";
 import { useTodosStore } from "@/stores/todos";
 import { storeToRefs } from "pinia";
-import { computed } from "vue";
+import { computed, onUpdated } from "vue";
 
 const { theme, todosChecked } = storeToRefs(useTodosStore());
 const { clearCheckedTodos } = useTodosStore();

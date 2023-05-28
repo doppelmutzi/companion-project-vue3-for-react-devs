@@ -14,9 +14,17 @@
 </template>
 
 <script setup lang="ts">
+console.log("render <TodoItem />");
+
+onUpdated(() => {
+  console.log("updated <TodoItem />");
+});
+
 import DeleteButton from "./DeleteButton.vue";
 import { useTodosStore } from "@/stores/todos";
-import { computed, ref, type PropType } from "vue";
+import { computed, onUpdated, ref /* type PropType */ } from "vue";
+
+import type { TodoItemProps } from "./types";
 
 const hover = ref(false);
 
@@ -27,21 +35,22 @@ const onMouseOut = () => {
   return (hover.value = false);
 };
 
-// const props = defineProps<Props>();
-
 const { toggleCheckTodo, removeTodo } = useTodosStore();
 
-const props = defineProps({
-  todo: {
-    type: Object as PropType<{
-      id: number;
-      label: string;
-      date: string;
-      checked: boolean;
-    }>,
-    required: true,
-  },
-});
+const props = defineProps<TodoItemProps>();
+
+// const props = defineProps({
+//   todo: {
+//     type: Object as PropType<{
+//       id: number;
+//       label: string;
+//       date: string;
+//       checked: boolean;
+//     }>,
+//     required: true,
+//   },
+// });
+
 const isCrossedOut = computed(() => props.todo.checked === true);
 
 const handleDeleteClick = () => {

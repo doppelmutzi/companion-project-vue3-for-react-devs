@@ -12,8 +12,15 @@
 </template>
 
 <script setup lang="ts">
+console.log("render <FilterButton />");
+
+onUpdated(() => {
+  console.log("updated <FilterButton />");
+});
+
 import { useTodosStore } from "@/stores/todos";
 import { storeToRefs } from "pinia";
+import { onUpdated } from "vue";
 
 // interface ButtonProps {
 //   label: string;

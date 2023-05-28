@@ -7,8 +7,14 @@
 </template>
 
 <script setup lang="ts">
+console.log("render <Todos />");
+
+onUpdated(() => {
+  console.log("updated <Todos />");
+});
+
 import { useTodosStore } from "@/stores/todos";
-import { computed } from "vue";
+import { computed, onUpdated } from "vue";
 import ActionBar from "@/components/ActionBar.vue";
 import TodoInput from "@/components/TodoInput.vue";
 import TodoList from "@/components/TodoList.vue";

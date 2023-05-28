@@ -11,6 +11,7 @@ const Container = styled.div`
 `;
 
 const FilterButtons = () => {
+  console.log("render <FilterButtons />");
   const { setFilterIndex } = useContext(AppContext);
   const [index, setIndex] = useState(0);
   return (

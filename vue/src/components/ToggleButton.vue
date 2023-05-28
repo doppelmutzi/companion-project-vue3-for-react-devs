@@ -9,8 +9,14 @@
 </template>
 
 <script setup lang="ts">
+console.log("render <ToggleButton />");
+
+onUpdated(() => {
+  console.log("updated <ToggleButton />");
+});
+
 import { useTodosStore } from "@/stores/todos";
-import { computed } from "vue";
+import { computed, onUpdated } from "vue";
 
 const store = useTodosStore();
 const allChecked = computed(() => store.todosLeft === 0);

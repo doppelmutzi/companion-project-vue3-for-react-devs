@@ -9,7 +9,8 @@ const Headline = styled.h1`
 `;
 
 const HeadlineComponent = ({ color }) => {
-  return <Headline color={color}>todos</Headline>;
+  console.log("render <Headline />");
+  return <Headline color={color}>todos.jsx</Headline>;
 };
 
 HeadlineComponent.propTypes = {

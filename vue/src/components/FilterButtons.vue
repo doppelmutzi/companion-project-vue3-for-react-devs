@@ -19,10 +19,17 @@
 </template>
 
 <script setup lang="ts">
+console.log("render <FilterButtons />");
+
+onUpdated(() => {
+  console.log("updated <FilterButtons />");
+});
+
 import FilterButton from "./FilterButton.vue";
 import { useTodosStore } from "@/stores/todos";
 import { FilterIndex } from "@/stores/todos";
 import { storeToRefs } from "pinia";
+import { onUpdated } from "vue";
 
 const store = useTodosStore();
 const { filterIndex } = storeToRefs(useTodosStore());

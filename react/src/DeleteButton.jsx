@@ -6,9 +6,10 @@ const Button = styled.button`
   font-size: 30px;
 `;
 
-const DeleteButton = ({ onClick, label }) => (
-  <Button onClick={onClick}>{label}</Button>
-);
+const DeleteButton = ({ onClick, label }) => {
+  console.log("render <DeleteButton />");
+  return <Button onClick={onClick}>{label}</Button>;
+};
 
 DeleteButton.propTypes = {
   label: PropTypes.string,

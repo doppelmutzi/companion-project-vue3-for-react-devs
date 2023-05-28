@@ -3,9 +3,15 @@
   <h1 :class="$attrs.class" :style="{ color }">{{ text }}</h1>
 </template>
 <script lang="ts" setup>
-import { type PropType, computed } from "vue";
+console.log("render <Headline />");
 
-export type HeadlineColor = "green" | "red" | "gray";
+onUpdated(() => {
+  console.log("updated <Headline />");
+});
+
+import { type PropType, computed, onUpdated } from "vue";
+
+type HeadlineColor = "green" | "red" | "gray";
 
 const prop = defineProps({
   fontColor: {

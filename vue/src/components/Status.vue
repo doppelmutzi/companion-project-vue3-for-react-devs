@@ -3,9 +3,15 @@
 </template>
 
 <script setup lang="ts">
+console.log("render <Status />");
+
+onUpdated(() => {
+  console.log("updated <Status />");
+});
+
 import { useTodosStore } from "@/stores/todos";
 import { storeToRefs } from "pinia";
-import { computed } from "vue";
+import { computed, onUpdated } from "vue";
 import LeftItems from "./LeftItems.vue";
 
 const { todosLeft } = storeToRefs(useTodosStore());

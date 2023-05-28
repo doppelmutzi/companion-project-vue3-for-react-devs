@@ -19,7 +19,13 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { onUpdated, reactive } from "vue";
+
+console.log("render <MailForm />");
+
+onUpdated(() => {
+  console.log("updated <MailForm />");
+});
 
 type User = {
   firstName: string;
@@ -31,6 +37,7 @@ const user = reactive<User>({ firstName: "", mail: "", frequency: "weekly" });
 
 const handleFirstNameChange = (evt: Event) => {
   user.firstName = (evt.target as HTMLInputElement).value;
+  console.log(user.firstName);
 };
 
 const emit = defineEmits(["subscribe-newsletter"]);

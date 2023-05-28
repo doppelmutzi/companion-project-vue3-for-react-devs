@@ -1,4 +1,4 @@
-export interface Props {
+export interface TodoItemProps {
   todo: {
     id: number;
     label: string;

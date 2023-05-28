@@ -19,6 +19,7 @@ const Container = styled.div`
 `;
 
 const ToggleButton = () => {
+  console.log("render <ToggleButton />");
   const { todos, setTodos } = useContext(AppContext);
   const allChecked = todos.findIndex((todo) => !todo.checked) == -1;
   return (

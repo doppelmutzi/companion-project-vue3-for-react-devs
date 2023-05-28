@@ -12,7 +12,22 @@ const Container = styled.div`
 `;
 
 const Todos = () => {
-  const [todos, setTodos] = useState([]);
+  console.log("render <Todos />");
+
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      label: "checked todo",
+      date: "today",
+      checked: false,
+    },
+    {
+      id: 2,
+      label: "unchecked todo",
+      date: "today",
+      checked: true,
+    },
+  ]);
   const [filterIndex, setFilterIndex] = useState(0);
   return (
     <AppContext.Provider

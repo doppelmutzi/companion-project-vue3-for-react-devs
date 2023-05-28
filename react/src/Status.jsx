@@ -2,6 +2,7 @@ import { useContext } from "react";
 import AppContext from "./AppContext";
 
 const Status = () => {
+  console.log("render <Status />");
   const { todos } = useContext(AppContext);
   const todosLeft = todos.reduce((count, todo) => {
     if (!todo.checked) return count + 1;

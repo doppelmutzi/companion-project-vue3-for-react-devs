@@ -3,6 +3,14 @@
 </template>
 
 <script setup lang="ts">
+import { onUpdated } from "vue";
+
+console.log("render <DeleteButton />");
+
+onUpdated(() => {
+  console.log("updated <DeleteButton />");
+});
+
 defineProps({
   label: {
     type: String,

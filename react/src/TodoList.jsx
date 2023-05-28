@@ -6,6 +6,8 @@ import AppContext from "./AppContext";
 const Container = styled.div``;
 
 const TodoList = () => {
+  console.log("render <TodoList />");
+
   const { todos, filterIndex } = useContext(AppContext);
   const [filteredTodos, setFilteredTodos] = useState([]);
   useEffect(() => {

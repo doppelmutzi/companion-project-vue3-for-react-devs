@@ -16,6 +16,7 @@ const Button = styled.button`
 `;
 
 const FilterButton = ({ label, onClick, active }) => {
+  console.log("render <FilterButton />");
   const { theme } = useContext(AppContext);
 
   return (
