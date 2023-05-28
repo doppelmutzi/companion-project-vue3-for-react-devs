@@ -1,6 +1,6 @@
 <template>
   <div class="todo-list">
-    <TodoItem v-for="todo in filteredTodos" :key="todo.id" :todo="todo" />
+    <slot v-for="todo in filteredTodos" name="todo" :todo="todo"></slot>
   </div>
 </template>
 
@@ -13,7 +13,6 @@ onUpdated(() => {
 
 import { useTodosStore } from "@/stores/todos";
 import { storeToRefs } from "pinia";
-import TodoItem from "./TodoItem.vue";
 import { onUpdated } from "vue";
 
 const { filteredTodos } = storeToRefs(useTodosStore());

@@ -2,10 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const FormContainer = styled.form`
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
   color: white;
   background: #6e7582;
   display: flex;

@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { useContext, useState, useEffect } from "react";
-import TodoItem from "./TodoItem";
 import AppContext from "./AppContext";
 
 const Container = styled.div``;
 
-const TodoList = () => {
+const TodoList = ({ renderItem }) => {
   console.log("render <TodoList />");
 
   const { todos, filterIndex } = useContext(AppContext);
@@ -21,9 +20,9 @@ const TodoList = () => {
   }, [filterIndex, todos]);
   return (
     <Container>
-      {filteredTodos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
-      ))}
+      {filteredTodos.map((todo) => {
+        return renderItem(todo);
+      })}
     </Container>
   );
 };

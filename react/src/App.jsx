@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 import Headline from "./Headline";
 import Todos from "./Todos";
 import MailForm from "./MailForm";
+import AppLayout from "./AppLayout";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -24,15 +25,10 @@ export const GlobalStyle = createGlobalStyle`
 
 const AppContainer = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const Container = styled.div`
-  width: 100%;
-  max-width: 80vw;
 `;
 
 const App = () => {
@@ -41,15 +37,18 @@ const App = () => {
     <>
       <GlobalStyle />
       <AppContainer>
-        <Container>
-          <MailForm
-            onSubscribeNewsletter={(firstName) =>
-              console.log(`Subscribe newsletter for ${firstName}`)
-            }
-          />
-          <Headline />
+        <AppLayout
+          headline={<Headline />}
+          newsletter={
+            <MailForm
+              onSubscribeNewsletter={(firstName) =>
+                console.log(`Subscribe newsletter for ${firstName}`)
+              }
+            />
+          }
+        >
           <Todos />
-        </Container>
+        </AppLayout>
       </AppContainer>
     </>
   );

@@ -55,11 +55,16 @@ form {
   background: #6e7582;
   display: flex;
   padding: $gap;
+  width: 100%;
 }
 
 fieldset {
   border: 0;
   padding: 0;
+
+  input {
+    max-width: 100px;
+  }
 
   + fieldset {
     margin-left: $gap;
@@ -73,5 +78,11 @@ fieldset {
 
 label {
   margin-right: $gap;
+}
+
+@media (max-width: 767px) {
+  form {
+    flex-wrap: wrap;
+  }
 }
 </style>
