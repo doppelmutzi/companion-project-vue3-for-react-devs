@@ -11,6 +11,15 @@
     </main>
   </div>
 </template>
+<script setup lang="ts">
+import { onUpdated } from "vue";
+
+console.log("render <AppLayout />");
+
+onUpdated(() => {
+  console.log("updated <AppLayout />");
+});
+</script>
 <style lang="scss">
 #app-layout {
   height: 100vh;

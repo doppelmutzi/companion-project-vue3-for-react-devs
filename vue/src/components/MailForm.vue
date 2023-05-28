@@ -37,7 +37,6 @@ const user = reactive<User>({ firstName: "", mail: "", frequency: "weekly" });
 
 const handleFirstNameChange = (evt: Event) => {
   user.firstName = (evt.target as HTMLInputElement).value;
-  console.log(user.firstName);
 };
 
 const emit = defineEmits(["subscribe-newsletter"]);

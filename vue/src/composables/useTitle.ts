@@ -1,4 +1,4 @@
-import { type MaybeRef, type Ref, watchEffect, ref } from "vue";
+import { type MaybeRef, type Ref, watchEffect, ref, watch } from "vue";
 
 type Options = {
   observe?: boolean;
@@ -13,6 +13,9 @@ export default (title: MaybeRef<string>, options?: Options) => {
     watchEffect(() => {
       console.log("watch effect");
       document.title = titlePrefix + titleRef.value;
+    });
+    watch(titleRef, (newTitle, oldTitle) => {
+      console.log(`watch new: ${newTitle} old: ${oldTitle}`);
     });
   } else {
     console.log("else");
