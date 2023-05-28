@@ -1,4 +1,31 @@
 import { useState } from "react";
+import styled from "styled-components";
+
+const FormContainer = styled.form`
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  color: white;
+  background: #6e7582;
+  display: flex;
+  padding: 5px;
+`;
+
+const FormGroup = styled.fieldset`
+  border: 0;
+  padding: 0;
+  flex: ${(props) => props.last && "1"};
+  text-align: ${(props) => props.last && "right"};
+
+  label {
+    margin-left: ${(props) => (props.first ? "0px" : "10px")};
+  }
+`;
+
+const FormLabel = styled.label`
+  margin-right: 5px;
+`;
 
 function MailForm({ onSubscribeNewsletter }) {
   console.log("render <MailForm />");
@@ -14,26 +41,26 @@ function MailForm({ onSubscribeNewsletter }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <label>first name</label>
+      <FormContainer onSubmit={handleSubmit}>
+        <FormGroup first={true}>
+          <FormLabel>first name</FormLabel>
           <input onChange={(evt) => setFirstName(evt.target.value)} />
-        </fieldset>
-        <fieldset>
-          <label>email</label>
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>email</FormLabel>
           <input onChange={(evt) => setEmail(evt.target.value)} />
-        </fieldset>
-        <fieldset>
-          <label>frequency</label>
+        </FormGroup>
+        <FormGroup>
+          <FormLabel>frequency</FormLabel>
           <select onChange={(evt) => setFrequency(evt.target.value)}>
             <option>weekly</option>
             <option>monthly</option>
           </select>
-        </fieldset>
-        <fieldset>
+        </FormGroup>
+        <FormGroup last={true}>
           <button type="submit">subscribe to newsletter</button>
-        </fieldset>
-      </form>
+        </FormGroup>
+      </FormContainer>
     </>
   );
 }
