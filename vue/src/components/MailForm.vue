@@ -1,13 +1,16 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <fieldset>
-      <label>first name</label
-      ><input :value="user.firstName" @input="handleFirstNameChange" />
+      <label>first name</label>
+      <!-- <input :value="user.firstName" @input="handleFirstNameChange" /> -->
+      <input :value="firstName" @input="handleFirstNameChange" />
     </fieldset>
-    <fieldset><label>email</label><input v-model="user.mail" /></fieldset>
+    <!-- <fieldset><label>email</label><input v-model="user.mail" /></fieldset> -->
+    <fieldset><label>email</label><input v-model="mail" /></fieldset>
     <fieldset>
-      <label>frequency</label
-      ><select v-model="user.frequency">
+      <label>frequency</label>
+      <!-- <select v-model="user.frequency"> -->
+      <select v-model="frequency">
         <option>weekly</option>
         <option>monthly</option>
       </select>
@@ -19,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { onUpdated, reactive } from "vue";
+import { onUpdated, reactive, toRefs } from "vue";
 
 console.log("render <MailForm />");
 
@@ -35,8 +38,11 @@ type User = {
 
 const user = reactive<User>({ firstName: "", mail: "", frequency: "weekly" });
 
+const { firstName, mail, frequency } = toRefs(user);
+
 const handleFirstNameChange = (evt: Event) => {
-  user.firstName = (evt.target as HTMLInputElement).value;
+  // user.firstName = (evt.target as HTMLInputElement).value;
+  firstName.value = (evt.target as HTMLInputElement).value;
 };
 
 const emit = defineEmits(["subscribe-newsletter"]);
