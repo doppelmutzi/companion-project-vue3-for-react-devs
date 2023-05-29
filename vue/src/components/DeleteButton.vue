@@ -11,7 +11,12 @@ onUpdated(() => {
   console.log("updated <DeleteButton />");
 });
 
-defineProps({
+type Props = {
+  label?: string;
+  onClick?: () => void;
+};
+
+/* defineProps({
   label: {
     type: String,
     default: "❌",
@@ -21,6 +26,13 @@ defineProps({
     default: () => {
       // no op
     },
+  },
+}); */
+
+withDefaults(defineProps<Props>(), {
+  label: "❌",
+  onClick: () => {
+    // no op
   },
 });
 </script>
